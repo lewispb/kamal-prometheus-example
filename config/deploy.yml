@@ -1,8 +1,11 @@
 service: kamal-prometheus-example
 image: lewispb/kamal-prometheus-example
 
+
 servers:
-  - 5.75.133.65
+  web:
+    hosts:
+      - 5.75.133.65
 
 registry:
   username: lewispb
@@ -12,3 +15,18 @@ registry:
 env:
   secret:
     - RAILS_MASTER_KEY
+
+# Prometheus metrics with OpenTelemetry Collector
+accessories:
+  otel_collector:
+    image: otel/opentelemetry-collector:0.100.0
+    port: 9394
+    files:
+      - config/otel_collector.yml:/etc/otelcol/config.yaml
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    options:
+      user: 0
+    roles:
+      - web
+      # - jobs

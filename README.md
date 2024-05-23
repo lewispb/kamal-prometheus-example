@@ -12,3 +12,9 @@ $ rails server
 ```sh
 $ curl localhost:9394/metrics
 ```
+
+### Deployment
+
+```sh
+$ kamal setup
+```
