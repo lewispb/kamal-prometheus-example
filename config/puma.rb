@@ -11,6 +11,11 @@ max_threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
 min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
 threads min_threads_count, max_threads_count
 
+# Expose Prometheus metrics on port 9394
+activate_control_app
+plugin :yabeda
+plugin :yabeda_prometheus
+
 # Specifies that the worker count should equal the number of processors in production.
 if ENV["RAILS_ENV"] == "production"
   require "concurrent-ruby"

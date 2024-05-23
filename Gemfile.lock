@@ -77,6 +77,8 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    anyway_config (2.6.4)
+      ruby-next-core (~> 1.0)
     base64 (0.2.0)
     bigdecimal (3.1.8)
     bindex (0.8.1)
@@ -100,6 +102,7 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     drb (2.2.1)
+    dry-initializer (3.1.1)
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -116,6 +119,7 @@ GEM
     jbuilder (2.12.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    json (2.7.2)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -152,6 +156,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.5-x86_64-linux)
       racc (~> 1.4)
+    prometheus-client-mmap (1.1.1-arm64-darwin)
+      rb_sys (~> 0.9.86)
     psych (5.1.2)
       stringio
     public_suffix (5.0.5)
@@ -196,6 +202,7 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.2.1)
+    rb_sys (0.9.97)
     rdoc (6.7.0)
       psych (>= 4.0.0)
     redis (5.2.0)
@@ -207,6 +214,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.2.8)
       strscan (>= 3.0.9)
+    ruby-next-core (1.0.3)
     rubyzip (2.3.2)
     selenium-webdriver (4.21.1)
       base64 (~> 0.2)
@@ -250,6 +258,22 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yabeda (0.12.0)
+      anyway_config (>= 1.0, < 3)
+      concurrent-ruby
+      dry-initializer
+    yabeda-prometheus-mmap (0.3.0)
+      prometheus-client-mmap
+      yabeda (~> 0.10)
+    yabeda-puma-plugin (0.7.1)
+      json
+      puma
+      yabeda (~> 0.5)
+    yabeda-rails (0.9.0)
+      activesupport
+      anyway_config (>= 1.3, < 3)
+      railties
+      yabeda (~> 0.8)
     zeitwerk (2.6.14)
 
 PLATFORMS
@@ -276,6 +300,10 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
+  yabeda
+  yabeda-prometheus-mmap
+  yabeda-puma-plugin
+  yabeda-rails
 
 RUBY VERSION
    ruby 3.3.1p55
