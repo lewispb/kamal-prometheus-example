@@ -19,6 +19,8 @@ gem "yabeda-rails"
 gem "yabeda-puma-plugin"
 gem "yabeda-prometheus-mmap"
 
+gem "kamal"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
 end
